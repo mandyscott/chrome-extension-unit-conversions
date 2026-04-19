@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unit Converter</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Unit Converter</h1>
+
+    <div class="category-tabs" role="tablist">
+      <button class="tab active" data-category="length" role="tab">Length</button>
+      <button class="tab" data-category="weight" role="tab">Weight</button>
+      <button class="tab" data-category="temperature" role="tab">Temp</button>
+      <button class="tab" data-category="volume" role="tab">Volume</button>
+    </div>
+
+    <div class="converter">
+      <div class="field">
+        <input type="number" id="input-a" placeholder="0" autocomplete="off" />
+        <select id="unit-a"></select>
+      </div>
+
+      <button class="swap-btn" id="swap-btn" title="Swap units">⇄</button>
+
+      <div class="field">
+        <input type="number" id="input-b" placeholder="0" autocomplete="off" />
+        <select id="unit-b"></select>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
