@@ -131,6 +131,33 @@ const CATEGORIES = {
     },
     defaults: ["l", "gal"],
   },
+
+  speed: {
+    units: ["kn", "kmh", "mph", "ms", "fts"],
+    labels: {
+      kn:   "Knots (kn)",
+      kmh:  "Kilometers/hour (km/h)",
+      mph:  "Miles/hour (mph)",
+      ms:   "Meters/second (m/s)",
+      fts:  "Feet/second (ft/s)",
+    },
+    // All values relative to meters per second
+    toBase: {
+      kn:  v => v * 0.514444,
+      kmh: v => v / 3.6,
+      mph: v => v * 0.44704,
+      ms:  v => v,
+      fts: v => v * 0.3048,
+    },
+    fromBase: {
+      kn:  v => v / 0.514444,
+      kmh: v => v * 3.6,
+      mph: v => v / 0.44704,
+      ms:  v => v,
+      fts: v => v / 0.3048,
+    },
+    defaults: ["kn", "kmh"],
+  },
 };
 
 const PRECISION = 6;
