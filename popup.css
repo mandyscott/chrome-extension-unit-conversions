@@ -16,11 +16,21 @@ body {
 }
 
 h1 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 15px;
   font-weight: 600;
   color: #1a1a1a;
   margin-bottom: 12px;
   letter-spacing: 0.2px;
+}
+
+.app-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  flex-shrink: 0;
 }
 
 /* Tabs */
@@ -35,8 +45,8 @@ h1 {
 
 .tab {
   flex: 1;
-  padding: 6px 0;
-  font-size: 11px;
+  padding: 6px 2px;
+  font-size: 10px;
   font-weight: 500;
   color: #555;
   background: transparent;
@@ -140,4 +150,86 @@ select:focus {
   border-color: #5b8dee;
   color: #fff;
   transform: rotate(180deg);
+}
+
+/* Phonetic panel */
+.phonetic-panel {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.phonetic-input-row {
+  position: relative;
+}
+
+input[type="text"]#phonetic-input {
+  width: 100%;
+  padding: 10px 56px 10px 10px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  background: #fff;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input[type="text"]#phonetic-input:focus {
+  border-color: #7C3AED;
+}
+
+.phonetic-count {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  font-weight: 500;
+  color: #999;
+  pointer-events: none;
+}
+
+.phonetic-output {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.phonetic-empty {
+  grid-column: 1 / -1;
+  padding: 24px 8px;
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+}
+
+.phonetic-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: #fff;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  padding: 6px 2px;
+}
+
+.phonetic-char {
+  font-size: 16px;
+  font-weight: 700;
+  color: #7C3AED;
+}
+
+.phonetic-word {
+  font-size: 10px;
+  font-weight: 500;
+  color: #444;
+  text-align: center;
+  line-height: 1.2;
 }

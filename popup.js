@@ -160,6 +160,18 @@ const CATEGORIES = {
   },
 };
 
+const PHONETIC_MAX_LENGTH = 32;
+
+const NATO_ALPHABET = {
+  A: "Alpha", B: "Bravo", C: "Charlie", D: "Delta", E: "Echo", F: "Foxtrot",
+  G: "Golf", H: "Hotel", I: "India", J: "Juliett", K: "Kilo", L: "Lima",
+  M: "Mike", N: "November", O: "Oscar", P: "Papa", Q: "Quebec", R: "Romeo",
+  S: "Sierra", T: "Tango", U: "Uniform", V: "Victor", W: "Whiskey", X: "X-ray",
+  Y: "Yankee", Z: "Zulu",
+  0: "Zero", 1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five",
+  6: "Six", 7: "Seven", 8: "Eight", 9: "Niner",
+};
+
 const PRECISION = 6;
 
 function convert(category, value, fromUnit, toUnit) {
@@ -192,6 +204,12 @@ const unitA  = document.getElementById("unit-a");
 const unitB  = document.getElementById("unit-b");
 const swapBtn = document.getElementById("swap-btn");
 const tabs   = document.querySelectorAll(".tab");
+
+const converterEl     = document.getElementById("converter");
+const phoneticPanelEl = document.getElementById("phonetic-panel");
+const phoneticInput   = document.getElementById("phonetic-input");
+const phoneticOutput  = document.getElementById("phonetic-output");
+const phoneticCount   = document.getElementById("phonetic-count");
 
 let activeCategory = "length";
 let updatingField = null; // prevents feedback loops
@@ -237,6 +255,50 @@ swapBtn.addEventListener("click", () => {
   if (inputA.value !== "") updateB();
 });
 
+function renderPhonetic() {
+  const raw = phoneticInput.value.slice(0, PHONETIC_MAX_LENGTH);
+  if (raw !== phoneticInput.value) phoneticInput.value = raw;
+  phoneticCount.textContent = `${raw.length} / ${PHONETIC_MAX_LENGTH}`;
+
+  phoneticOutput.innerHTML = "";
+
+  if (raw === "") {
+    const empty = document.createElement("p");
+    empty.className = "phonetic-empty";
+    empty.textContent = "Type or paste a code to spell it out";
+    phoneticOutput.appendChild(empty);
+    return;
+  }
+
+  for (const ch of raw) {
+    const upper = ch.toUpperCase();
+    const word = NATO_ALPHABET[upper];
+
+    const item = document.createElement("div");
+    item.className = "phonetic-item";
+
+    const charEl = document.createElement("span");
+    charEl.className = "phonetic-char";
+    charEl.textContent = ch === " " ? "␣" : ch;
+
+    const wordEl = document.createElement("span");
+    wordEl.className = "phonetic-word";
+    wordEl.textContent = word || (ch.trim() === "" ? "Space" : "—");
+
+    item.appendChild(charEl);
+    item.appendChild(wordEl);
+    phoneticOutput.appendChild(item);
+  }
+}
+
+phoneticInput.addEventListener("input", renderPhonetic);
+
+function setPanelVisibility(category) {
+  const isPhonetic = category === "phonetic";
+  converterEl.style.display = isPhonetic ? "none" : "flex";
+  phoneticPanelEl.style.display = isPhonetic ? "flex" : "none";
+}
+
 tabs.forEach(tab => {
   tab.addEventListener("click", () => {
     tabs.forEach(t => t.classList.remove("active"));
@@ -244,10 +306,20 @@ tabs.forEach(tab => {
     activeCategory = tab.dataset.category;
     inputA.value = "";
     inputB.value = "";
-    populateSelects(activeCategory);
+
+    setPanelVisibility(activeCategory);
+
+    if (activeCategory === "phonetic") {
+      phoneticInput.value = "";
+      renderPhonetic();
+      phoneticInput.focus();
+    } else {
+      populateSelects(activeCategory);
+    }
   });
 });
 
 // Init
 populateSelects(activeCategory);
+setPanelVisibility(activeCategory);
 inputA.focus();
