@@ -319,7 +319,36 @@ tabs.forEach(tab => {
   });
 });
 
+function applyPendingConversion(pending) {
+  if (!pending) return;
+
+  const targetTab = document.querySelector(`.tab[data-category="${pending.category}"]`);
+  if (!targetTab) return;
+  targetTab.click();
+
+  if (pending.category === "phonetic") {
+    phoneticInput.value = pending.text || "";
+    renderPhonetic();
+  } else {
+    if (pending.fromUnit) unitA.value = pending.fromUnit;
+    if (pending.toUnit) unitB.value = pending.toUnit;
+    if (pending.value !== null && pending.value !== undefined) {
+      inputA.value = pending.value;
+      updateB();
+    }
+  }
+}
+
 // Init
 populateSelects(activeCategory);
 setPanelVisibility(activeCategory);
 inputA.focus();
+
+if (typeof chrome !== "undefined" && chrome.storage?.session) {
+  chrome.storage.session.get("pendingConversion").then(({ pendingConversion }) => {
+    if (pendingConversion) {
+      applyPendingConversion(pendingConversion);
+      chrome.storage.session.remove("pendingConversion");
+    }
+  });
+}
