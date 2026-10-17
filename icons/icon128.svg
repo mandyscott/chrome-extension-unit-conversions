@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
 
   <!-- Purple rounded background -->
-  <rect x="2" y="2" width="124" height="124" rx="22" fill="#7C3AED"/>
+  <rect x="0" y="0" width="128" height="128" rx="22" fill="#7C3AED"/>
 
   <!-- Right-pointing arrow (→) -->
   <rect x="16" y="43" width="76" height="10" rx="5" fill="white"/>
