@@ -4,11 +4,11 @@
   <rect x="0" y="0" width="128" height="128" rx="22" fill="#7C3AED"/>
 
   <!-- Right-pointing arrow (→) -->
-  <rect x="16" y="43" width="76" height="10" rx="5" fill="white"/>
-  <polygon points="86,30 86,66 116,48" fill="white"/>
+  <rect x="16" y="28" width="76" height="10" rx="5" fill="white"/>
+  <polygon points="86,15 86,51 116,33" fill="white"/>
 
   <!-- Left-pointing arrow (←) -->
-  <rect x="36" y="75" width="76" height="10" rx="5" fill="white"/>
-  <polygon points="42,62 42,98 12,80" fill="white"/>
+  <rect x="36" y="90" width="76" height="10" rx="5" fill="white"/>
+  <polygon points="42,77 42,113 12,95" fill="white"/>
 
 </svg>
