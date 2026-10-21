@@ -1,6 +1,6 @@
 # Chrome Web Store Listing — Unit Converter
 
-> Last Updated: 2026-10-20
+> Last Updated: 2026-10-21
 
 ## Store Listing
 
@@ -22,6 +22,8 @@ Selected a number or code on any webpage? Right-click it and choose Convert from
 This extension works entirely offline. It doesn't collect, store, or transmit any personal data, and it makes no network requests of any kind.
 
 Found a bug or have a feature request? Reach out through the support link on this listing.
+
+If you find it useful, you're welcome to support ongoing development at https://buymeacoffee.com/mandyscott — entirely optional.
 
 **Category** [REQUIRED]
 Productivity
@@ -97,7 +99,7 @@ TODO — optional, e.g. a GitHub repo link
 
 | Version | Date | Changes | Status |
 |---------|------|---------|--------|
-| 1.2.0 | 2026-10-20 | Updated manifest description to mention Speed and Phonetic tabs (previously stale); switched icons to a two-arrow design in royal purple; added Speed category and Phonetic (NATO alphabet) tab; added right-click context-menu quick-convert. | Draft |
+| 1.2.0 | 2026-10-21 | Updated manifest description to mention Speed and Phonetic tabs (previously stale); switched icons to a two-arrow design in royal purple; added Speed category and Phonetic (NATO alphabet) tab; added right-click context-menu quick-convert; added a quiet "Buy me a coffee" support link in the popup footer and detailed description. | Draft |
 
 ## Review Notes
 
